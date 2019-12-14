@@ -1,0 +1,66 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+.ml-40 {
+    margin-left: 40px;
+}
+.mt-20{
+    margin-top: 20px;
+}
+.mt-30{
+    margin-top: 30px;
+}
+
+.container {
+    width: 90%;
+
+    h3 {
+        padding: 15px;
+        font-size: 35px;
+        text-align: center;
+    }
+
+    .labelTxt {
+        font-size: 20px;
+        font-weight: normal;
+        margin-top: 10px;
+        display: inline-block;
+        color: #333;
+    }
+
+    .input {
+        padding: 10px 50px;
+        // text-align: center;
+    }
+    .txtRs{
+        text-align: left;
+        margin-top: 15px;
+        font-size: 18px;
+    }
+
+}
+
+.input-field {
+    position: relative;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+input[type=number]{
+    font-weight: 500;
+    font-size: 24px !important;
+}
+input[type=range]{
+    margin: 11px 0;
+    border: none;
+}
+
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
