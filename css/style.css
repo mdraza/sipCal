@@ -4,6 +4,7 @@ body {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
+  background-color: #f0f0f0;
 }
 
 .ml-40 {
@@ -18,18 +19,34 @@ body {
   margin-top: 30px;
 }
 
+h3 {
+  margin: 0;
+}
+
+.headTxt {
+  padding: 25px 0 0px !important;
+  font-size: 30px;
+  text-align: center;
+}
+
+#lumsumCal {
+  display: none;
+}
+
 .container {
   width: 95%;
 }
 
-.container h3 {
-  padding: 15px;
-  font-size: 35px;
+.container .subTxt {
   text-align: center;
+  display: block;
+  font-size: 16px;
+  margin: 10px 0 15px;
 }
 
 .container .row {
   margin-bottom: 0;
+  background-color: #fff;
 }
 
 .container .labelTxt {
@@ -54,17 +71,20 @@ body {
   margin: 10px 0 0;
 }
 
-.container .txt {
-  margin-top: 15px;
+.container .txt2 {
   text-align: center;
 }
 
-.container .txt span {
+.container .txt2 span {
   color: #333;
+  display: block;
+  text-align: center;
+  margin-top: 0;
+  font-size: 15px;
 }
 
 .container .totAmnt {
-  margin: 25px 0 10px;
+  margin: 30px 0 25px;
 }
 
 .container .totAmnt a {
@@ -73,27 +93,46 @@ body {
 
 .container .totAmnt b {
   font-size: 22px;
+  color: #002521;
 }
 
 .container .totAmnt span {
-  font-size: 25px;
+  font-size: 23px;
   margin-left: 35px;
   display: inline-block;
   padding: 12px;
-  background-color: #d4d4d4;
+  background-color: rgba(38, 166, 154, 0.2);
+  color: #002b27;
   border-radius: 3px;
 }
 
+.container .totAmnt #res {
+  font-size: 23px;
+  color: #002b27;
+}
+
 .chrt {
-  padding: 20px 0;
+  padding: 51px 0;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
 
+.chrt h3 {
+  position: absolute;
+  top: 355px;
+  left: 600px;
+  font-size: 40px;
+  -webkit-transform: rotate(-32deg);
+          transform: rotate(-32deg);
+  color: #d4d4d4;
+}
+
 .chrt h4 {
-  margin-top: 20px;
-  text-align: center;
-  font-size: 26px;
+  position: absolute;
+  top: 110px;
+  left: 800px;
+  font-size: 25px;
+  display: none;
 }
 
 .chrt #myChart {

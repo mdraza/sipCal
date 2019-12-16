@@ -3,8 +3,8 @@ body {
     padding: 0;
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
+    background-color: #f0f0f0;
 }
-
 .ml-40 {
     margin-left: 40px;
 }
@@ -16,19 +16,32 @@ body {
 .mt-30 {
     margin-top: 30px;
 }
-
+h3{
+    margin: 0;
+}
+.headTxt{
+    padding: 25px 0 0px !important;
+    font-size: 30px;
+    text-align: center;
+}
+#lumsumCal{
+    display: none;
+}
 .container {
     width: 95%;
-
-    h3 {
-        padding: 15px;
-        font-size: 35px;
+    
+    .subTxt{
         text-align: center;
+        display: block;
+        font-size: 16px;
+        margin: 10px 0 15px;
     }
 
     .row {
         margin-bottom: 0;
+        background-color: #fff;
     }
+
 
     .labelTxt {
         font-size: 17px;
@@ -53,45 +66,68 @@ body {
         margin: 10px 0 0;
     }
 
-    .txt {
-        margin-top: 15px;
+    .txt2 {
         text-align: center;
+
         span {
             color: #333;
+            display: block;
+            text-align: center;
+            margin-top: 0;
+            font-size: 15px;
         }
     }
 
     .totAmnt {
-        margin: 25px 0 10px;
-        a{
+        margin: 30px 0 25px;
+
+        a {
             display: block;
         }
 
         b {
             font-size: 22px;
+            color: #002521;
         }
 
         span {
-            font-size: 25px;
+            font-size: 23px;
             margin-left: 35px;
             display: inline-block;
             padding: 12px;
-            background-color: rgb(212, 212, 212);
+            background-color: rgba(38, 166, 154, 0.2);
+            color: #002b27;
             border-radius: 3px;
+        }
+
+        #res {
+            font-size: 23px;
+            color: #002b27;
         }
     }
 
 }
 
 .chrt {
-    padding: 20px 0;
+    padding: 51px 0;
     box-sizing: border-box;
 
-    // height: 524px;
+    h3 {
+        position: absolute;
+        top: 355px;
+        left: 600px;
+        font-size: 40px;
+        transform: rotate(-32deg);
+        color: #d4d4d4;
+
+    }
+
     h4 {
-        margin-top: 20px;
-        text-align: center;
-        font-size: 26px;
+        position: absolute;
+        top: 110px;
+        left: 800px;
+        font-size: 25px;
+        display: none;
     }
 
     #myChart {

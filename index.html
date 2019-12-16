@@ -15,34 +15,50 @@
 
 <body>
     <div class="container">
-        <h3 class="txt">SIP Calculator - <small>Systematic Investment Plan Calculator</small></h3>
+        <h3 class="headTxt">SIP Calculator</h3>
+        <small class="subTxt">Systematic Investment Plan Calculator</small>
         <div class="row">
             <div class="col m4 z-depth-1 input">
                 <form action="">
-                    <p class="txt">
+                    <p class="" style="text-align:center">
                         <label>
-                            <input class="with-gap" name="group3" type="radio" checked />
+                            <input id="check1" class="with-gap" name="group3" type="radio" checked onclick="clickRadioButton()" />
                             <span>SIP</span>
                         </label>
                         <label class="ml-40">
-                            <input class="with-gap" name="group3" type="radio"  />
+                            <input id="check2" class="with-gap" name="group3" type="radio" onclick="clickRadioButton()" />
                             <span>LUMPSUM</span>
                         </label>
                     </p>
                     <section class="txt1">
-                        <div class="row mt-30">
+                        <div class="row mt-30" id="sipCal">
                             <div class="col m6">
                                 <label for="" class="labelTxt">Monthly Investment</label>
                             </div>
                             <div class="col m4">
                                 <div class="input-field">
-                                    <input id="mIvstAmnt" value="25000" type="number" class="validate" >
+                                    <input id="mIvstAmnt" value="25000" type="number" class="validate"
+                                        onclick="yesnoCheck()">
                                 </div>
                             </div>
                             <div class="col m2 txtRs">Rs.</div>
                         </div>
+                        <div class="row mt-30" id="lumsumCal">
+                            <div class="col m6">
+                                <label for="" class="labelTxt">Yearly Investment</label>
+                            </div>
+                            <div class="col m4">
+                                <div class="input-field">
+                                    <input id="yIvstAmnt" value="25000" type="number" class="validate"
+                                        onclick="yesnoCheck()">
+                                </div>
+                            </div>
+                            <div class="col m2 txtRs">Rs.</div>
+                        </div>
+
+
                         <p class="range-field">
-                            <input type="range" id="mIvstAmntRange" min="1000" max="50000" oninput="investAmount()"/>
+                            <input type="range" id="mIvstAmntRange" min="1000" max="50000" oninput="sipCalculate()" />
                         </p>
                     </section>
                     <section class="txt1">
@@ -58,7 +74,7 @@
                             <div class="col m2 txtRs">Year</div>
                         </div>
                         <p class="range-field">
-                            <input type="range" min="1" max="100" id="nOfyearRange" oninput="noOfYears()"/>
+                            <input type="range" min="1" max="50" id="nOfyearRange" oninput="sipCalculate()" />
                         </p>
                     </section>
                     <section class="txt1">
@@ -74,12 +90,12 @@
                             <div class="col m2 txtRs">%</div>
                         </div>
                         <p class="range-field">
-                            <input type="range" id="returnRange" min="5" max="50" oninput="returnRate()"/>
+                            <input type="range" id="returnRange" min="5" max="50" oninput="sipCalculate()" />
                         </p>
                     </section>
                     <section class="totAmnt">
-                        <!-- <b>Your Wealth:</b> <span>Rs. 358745</span> -->
-                        <a class="waves-effect waves-light btn">Calculate</a>
+                        <b>Your Wealth:</b><span> Rs. <label id="res">5774544</label></span>
+                        <!-- <a class="waves-effect waves-light btn">Calculate</a> -->
                     </section>
 
 
@@ -89,7 +105,8 @@
             </div>
             <div class="col m8 z-depth-1">
                 <div class="container chrt">
-                    <h4>SIP Graph</h4>
+                    <h3 id="demoTxt">Please Set the Value Using Range</h3>
+                    <h4 id="sipTxt">SIP Calculation</h4>
                     <canvas id="myChart"></canvas>
                 </div>
 
@@ -107,10 +124,113 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
     <script>
-        var invstAmtSlider, yer, retRate;
-        var totalInvest = document.getElementById("mIvstAmntRange").value;
+        function clickRadioButton() {
+            if (document.getElementById("check1").checked) {
+                document.getElementById("sipCal").style.display = "block";
+                document.getElementById("lumsumCal").style.display = "none";
+            }
 
-        
+            if (document.getElementById("check2").checked) {
+                document.getElementById("lumsumCal").style.display = "block";
+                document.getElementById("sipCal").style.display = "none";
+            }
+        }
+
+
+        function sipCalculate() {
+            var invstAmtSlider, year, returnRate, totalInvest, interestAmount, totalReturnAmount, totalInvestLumsum, yearlyIvstAmnt;
+            monthlyInvest = document.getElementById("mIvstAmntRange").value;
+            document.getElementById("mIvstAmnt").value = monthlyInvest;
+
+            yearlyIvstAmnt = document.getElementById("mIvstAmnt").value;
+
+            year = document.getElementById("nOfyearRange").value;
+            document.getElementById("nOfyear").value = year;
+
+            returnRate = document.getElementById("returnRange").value;
+            document.getElementById("return").value = returnRate;
+
+            document.getElementById("demoTxt").style.display = "none";
+            document.getElementById("sipTxt").style.display = 'block';
+
+            totalInvest = monthlyInvest *  12 * year;
+            interestAmount = (totalInvest * returnRate) / 100;
+            totalReturnAmount = totalInvest + interestAmount;
+            document.getElementById("res").innerHTML = Math.floor(totalReturnAmount);
+
+            // totalInvestLumsum = monthlyInvest;
+
+
+
+
+            let myChart = document.getElementById("myChart").getContext('2d');
+            // Global Option
+            Chart.defaults.global.defaultFontFamily = 'verdana';
+            Chart.defaults.global.defaultFontSize = 14;
+            Chart.defaults.global.defaultFontColor = '#777';
+            let populationChart = new Chart(myChart, {
+                type: 'bar', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
+                data: {
+                    labels: ['Total Invest', 'Interest Amount', 'Total Return'],
+                    datasets: [{
+                        label: 'Amount',
+                        data: [
+                            totalInvest,
+                            interestAmount,
+                            totalReturnAmount
+                        ],
+                        backgroundColor: [
+                            'rgba(38, 166, 154, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                        ],
+                        borderWidth: 1,
+                        borderColor: [
+                            'rgba(38, 166, 154, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                        ],
+                        hoverBorderWidth: 2,
+                        hoverBorderColor: [
+                            'rgba(38, 166, 154, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                        ]
+                    }]
+                },
+                options: {
+                    title: {
+                        display: false,
+                        text: 'SIP Calculation',
+                        fontSize: 30,
+                        fontWeight: 300
+                    },
+                    legend: {
+                        display: true,
+                        position: 'top',
+                        labels: {
+                            fontColor: '#000'
+                        }
+                    },
+                    layout: {
+                        padding: {
+                            top: 30,
+                            left: 0,
+                            right: 0,
+                            bottom: 20
+                        }
+                    },
+                    tooltips: {
+                        enabled: true
+                    }
+                }
+            })
+
+        }
+
+
+
+
         // function investAmount(){
         //     invstAmtSlider = document.getElementById("mIvstAmntRange").value;
         //     document.getElementById("mIvstAmnt").value = invstAmtSlider; 
@@ -123,75 +243,6 @@
         //     retRate = document.getElementById("returnRange").value;
         //     document.getElementById("return").value = retRate;
         // }
-        
-        
-
-
-
-
-        let myChart = document.getElementById("myChart").getContext('2d');
-        // Global Option
-        Chart.defaults.global.defaultFontFamily = 'verdana';
-        Chart.defaults.global.defaultFontSize = 14;
-        Chart.defaults.global.defaultFontColor = '#777';
-        let populationChart = new Chart(myChart, {
-            type: 'doughnut', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
-            data: {
-                labels: ['Monthly Invest', 'Total Return'],
-                datasets: [{
-                    label: 'Amount',
-                    data: [
-                    totalInvest,
-                    54725
-                    ],
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.3)',
-                        'rgba(54, 162, 235, 0.3)',
-                        // 'rgba(255, 206, 86, 0.3)',
-                        // 'rgba(75, 192, 192, 0.3)'
-                    ],
-                    borderWidth: 1,
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        // 'rgba(255, 206, 86, 1)',
-                        // 'rgba(75, 192, 192, 1)'
-                    ],
-                    hoverBorderWidth: 2,
-                    hoverBorderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        // 'rgba(255, 206, 86, 1)',
-                        // 'rgba(75, 192, 192, 1)'
-                    ]
-                }]
-            },
-            options: {
-                title: {
-                    display: true,
-                    text: 'Populated City in Jharkhand',
-                    fontSize: 20
-                },
-                legend: {
-                    display: true,
-                    position: 'top',
-                    labels: {
-                        fontColor: '#000'
-                    }
-                },
-                layout: {
-                    padding: {
-                        top: 30,
-                        left: 0,
-                        right: 0,
-                        bottom: 20
-                    }
-                },
-                tooltips: {
-                    enabled: true
-                }
-            }
-        })
     </script>
 </body>
 
