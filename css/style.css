@@ -28,10 +28,13 @@ body {
   text-align: center;
 }
 
+.container .row {
+  margin-bottom: 0;
+}
+
 .container .labelTxt {
-  font-size: 20px;
+  font-size: 17px;
   font-weight: normal;
-  margin-top: 10px;
   display: inline-block;
   color: #333;
 }
@@ -44,6 +47,50 @@ body {
   text-align: left;
   margin-top: 15px;
   font-size: 18px;
+}
+
+.container .range-field {
+  margin: 10px 0 0;
+}
+
+.container .txt {
+  margin-top: 15px;
+}
+
+.container .txt span {
+  color: #333;
+}
+
+.container .totAmnt {
+  margin: 20px 0;
+}
+
+.container .totAmnt b {
+  font-size: 22px;
+}
+
+.container .totAmnt span {
+  font-size: 25px;
+  margin-left: 35px;
+  display: inline-block;
+  padding: 12px;
+  background-color: #d4d4d4;
+  border-radius: 3px;
+}
+
+.chrt {
+  padding: 20px 0 10px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.chrt h4 {
+  margin-top: 20px;
+}
+
+.chrt #myChart {
+  margin-top: 37px;
+  width: 100%;
 }
 
 .input-field {

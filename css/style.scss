@@ -8,10 +8,12 @@ body {
 .ml-40 {
     margin-left: 40px;
 }
-.mt-20{
+
+.mt-20 {
     margin-top: 20px;
 }
-.mt-30{
+
+.mt-30 {
     margin-top: 30px;
 }
 
@@ -24,10 +26,14 @@ body {
         text-align: center;
     }
 
+    .row {
+        margin-bottom: 0;
+    }
+
     .labelTxt {
-        font-size: 20px;
+        font-size: 17px;
         font-weight: normal;
-        margin-top: 10px;
+        // margin-top: 10px;
         display: inline-block;
         color: #333;
     }
@@ -36,12 +42,56 @@ body {
         padding: 10px 50px;
         // text-align: center;
     }
-    .txtRs{
+
+    .txtRs {
         text-align: left;
         margin-top: 15px;
         font-size: 18px;
     }
 
+    .range-field {
+        margin: 10px 0 0;
+    }
+
+    .txt {
+        margin-top: 15px;
+        span {
+            color: #333;
+        }
+    }
+
+    .totAmnt {
+        margin: 20px 0;
+
+        b {
+            font-size: 22px;
+        }
+
+        span {
+            font-size: 25px;
+            margin-left: 35px;
+            display: inline-block;
+            padding: 12px;
+            background-color: rgb(212, 212, 212);
+            border-radius: 3px;
+        }
+    }
+
+}
+
+.chrt {
+    padding: 20px 0 10px;
+    box-sizing: border-box;
+
+    // height: 524px;
+    h4 {
+        margin-top: 20px;
+    }
+
+    #myChart {
+        margin-top: 37px;
+        width: 100%;
+    }
 }
 
 .input-field {
@@ -49,11 +99,13 @@ body {
     margin-top: 0;
     margin-bottom: 0;
 }
-input[type=number]{
+
+input[type=number] {
     font-weight: 500;
     font-size: 24px !important;
 }
-input[type=range]{
+
+input[type=range] {
     margin: 11px 0;
     border: none;
 }

@@ -17,7 +17,7 @@
     <div class="container">
         <h3 class="txt">SIP Calculator - <small>Systematic Investment Plan Calculator</small></h3>
         <div class="row">
-            <div class="col m6 z-depth-1 input">
+            <div class="col m5 z-depth-1 input">
                 <form action="">
                     <p class="txt">
                         <label>
@@ -36,13 +36,13 @@
                             </div>
                             <div class="col m3">
                                 <div class="input-field">
-                                    <input id="mIvstAmnt" value="25000" type="number" class="validate">
+                                    <input id="mIvstAmnt" value="25000" type="number" class="validate" >
                                 </div>
                             </div>
                             <div class="col m4 txtRs">Rs.</div>
                         </div>
                         <p class="range-field">
-                            <input type="range" id="test5" min="0" max="100" />
+                            <input type="range" id="mIvstAmntRange" min="1000" max="50000" oninput="investAmount()"/>
                         </p>
                     </section>
                     <section class="txt1">
@@ -58,24 +58,27 @@
                             <div class="col m4 txtRs">Year</div>
                         </div>
                         <p class="range-field">
-                            <input type="range" id="test5" min="0" max="100" />
+                            <input type="range" min="1" max="100" id="nOfyearRange" oninput="noOfYears()"/>
                         </p>
                     </section>
                     <section class="txt1">
                         <div class="row mt-30">
                             <div class="col m5">
-                                <label for="" class="labelTxt">Returns  </label>
+                                <label for="" class="labelTxt">Returns </label>
                             </div>
                             <div class="col m3">
                                 <div class="input-field">
-                                    <input id="nOfyear" value="11" type="number" class="validate">
+                                    <input id="return" value="11" type="number" class="validate">
                                 </div>
                             </div>
                             <div class="col m4 txtRs">%</div>
                         </div>
                         <p class="range-field">
-                            <input type="range" id="test5" min="0" max="100" />
+                            <input type="range" id="returnRange" min="5" max="50" oninput="returnRate()"/>
                         </p>
+                    </section>
+                    <section class="totAmnt">
+                        <b>Your Wealth:</b> <span>Rs. 358745</span>
                     </section>
 
 
@@ -83,8 +86,12 @@
 
                 </form>
             </div>
-            <div class="col m6 z-depth-1">
-                <p>SIP Graph</p>
+            <div class="col m7 z-depth-1">
+                <div class="container chrt">
+                    <h4>SIP Graph</h4>
+                    <canvas id="myChart"></canvas>
+                </div>
+
             </div>
         </div>
     </div>
@@ -99,8 +106,88 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
     <script>
+        function investAmount(){
+            var invstAmtSlider = document.getElementById("mIvstAmntRange").value;
+            document.getElementById("mIvstAmnt").value = invstAmtSlider;
+        }
+        function noOfYears(){
+            var yer = document.getElementById("nOfyearRange").value;
+            document.getElementById("nOfyear").value = yer;
+        }
+        function returnRate(){
+            var retRate = document.getElementById("returnRange").value;
+            document.getElementById("return").value = retRate;
+        }
 
 
+
+
+
+        let myChart = document.getElementById("myChart").getContext('2d');
+        // Global Option
+        Chart.defaults.global.defaultFontFamily = 'verdana';
+        Chart.defaults.global.defaultFontSize = 14;
+        Chart.defaults.global.defaultFontColor = '#777';
+        let populationChart = new Chart(myChart, {
+            type: 'doughnut', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
+            data: {
+                labels: ['Dhanbad', 'Ranchi', 'Bokaro', 'Tata'],
+                datasets: [{
+                    label: 'Populations',
+                    data: [
+                        1160000,
+                        1070000,
+                        414820,
+                        1340000
+                    ],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.3)',
+                        'rgba(54, 162, 235, 0.3)',
+                        'rgba(255, 206, 86, 0.3)',
+                        'rgba(75, 192, 192, 0.3)'
+                    ],
+                    borderWidth: 1,
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)'
+                    ],
+                    hoverBorderWidth: 2,
+                    hoverBorderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)'
+                    ]
+                }]
+            },
+            options: {
+                title: {
+                    display: true,
+                    text: 'Populated City in Jharkhand',
+                    fontSize: 20
+                },
+                legend: {
+                    display: true,
+                    position: 'top',
+                    labels: {
+                        fontColor: '#000'
+                    }
+                },
+                layout: {
+                    padding: {
+                        top: 30,
+                        left: 0,
+                        right: 0,
+                        bottom: 20
+                    }
+                },
+                tooltips: {
+                    enabled: true
+                }
+            }
+        })
     </script>
 </body>
 
