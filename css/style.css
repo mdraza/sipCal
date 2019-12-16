@@ -19,7 +19,7 @@ body {
 }
 
 .container {
-  width: 90%;
+  width: 95%;
 }
 
 .container h3 {
@@ -35,6 +35,7 @@ body {
 .container .labelTxt {
   font-size: 17px;
   font-weight: normal;
+  margin-top: 10px;
   display: inline-block;
   color: #333;
 }
@@ -55,6 +56,7 @@ body {
 
 .container .txt {
   margin-top: 15px;
+  text-align: center;
 }
 
 .container .txt span {
@@ -62,7 +64,11 @@ body {
 }
 
 .container .totAmnt {
-  margin: 20px 0;
+  margin: 25px 0 10px;
+}
+
+.container .totAmnt a {
+  display: block;
 }
 
 .container .totAmnt b {
@@ -79,13 +85,15 @@ body {
 }
 
 .chrt {
-  padding: 20px 0 10px;
+  padding: 20px 0;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
 
 .chrt h4 {
   margin-top: 20px;
+  text-align: center;
+  font-size: 26px;
 }
 
 .chrt #myChart {
