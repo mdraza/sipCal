@@ -22,11 +22,11 @@
                 <form action="">
                     <p class="" style="text-align:center">
                         <label>
-                            <input id="check1" class="with-gap" name="group3" type="radio" checked onclick="clickRadioButton()" />
+                            <input id="check1" class="with-gap" name="group3" type="radio" checked onclick="sipCalculate()" />
                             <span>SIP</span>
                         </label>
                         <label class="ml-40">
-                            <input id="check2" class="with-gap" name="group3" type="radio" onclick="clickRadioButton()" />
+                            <input id="check2" class="with-gap" name="group3" type="radio" onclick="sipCalculate()" />
                             <span>LUMPSUM</span>
                         </label>
                     </p>
@@ -37,8 +37,7 @@
                             </div>
                             <div class="col m4">
                                 <div class="input-field">
-                                    <input id="mIvstAmnt" value="25000" type="number" class="validate"
-                                        onclick="yesnoCheck()">
+                                    <input id="mIvstAmnt" value="25000" type="number" class="validate">
                                 </div>
                             </div>
                             <div class="col m2 txtRs">Rs.</div>
@@ -49,8 +48,7 @@
                             </div>
                             <div class="col m4">
                                 <div class="input-field">
-                                    <input id="yIvstAmnt" value="25000" type="number" class="validate"
-                                        onclick="yesnoCheck()">
+                                    <input id="yIvstAmnt" value="25000" type="number" class="validate">
                                 </div>
                             </div>
                             <div class="col m2 txtRs">Rs.</div>
@@ -124,25 +122,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
     <script>
-        function clickRadioButton() {
-            if (document.getElementById("check1").checked) {
-                document.getElementById("sipCal").style.display = "block";
-                document.getElementById("lumsumCal").style.display = "none";
-            }
-
-            if (document.getElementById("check2").checked) {
-                document.getElementById("lumsumCal").style.display = "block";
-                document.getElementById("sipCal").style.display = "none";
-            }
-        }
-
 
         function sipCalculate() {
             var invstAmtSlider, year, returnRate, totalInvest, interestAmount, totalReturnAmount, totalInvestLumsum, yearlyIvstAmnt;
+
             monthlyInvest = document.getElementById("mIvstAmntRange").value;
             document.getElementById("mIvstAmnt").value = monthlyInvest;
 
-            yearlyIvstAmnt = document.getElementById("mIvstAmnt").value;
+            yearlyIvstAmnt = document.getElementById("mIvstAmntRange").value;
+            document.getElementById("yIvstAmnt").value = yearlyIvstAmnt;
 
             year = document.getElementById("nOfyearRange").value;
             document.getElementById("nOfyear").value = year;
@@ -153,7 +141,19 @@
             document.getElementById("demoTxt").style.display = "none";
             document.getElementById("sipTxt").style.display = 'block';
 
-            totalInvest = monthlyInvest *  12 * year;
+            if (document.getElementById("check1").checked) {
+                document.getElementById("sipCal").style.display = "block";
+                document.getElementById("lumsumCal").style.display = "none";
+                totalInvest = monthlyInvest *  12 * year;
+            }
+
+            if (document.getElementById("check2").checked) {
+                document.getElementById("lumsumCal").style.display = "block";
+                document.getElementById("sipCal").style.display = "none";
+                totalInvest = yearlyIvstAmnt * year;
+            }
+
+            // totalInvest = monthlyInvest *  12 * year;
             interestAmount = (totalInvest * returnRate) / 100;
             totalReturnAmount = totalInvest + interestAmount;
             document.getElementById("res").innerHTML = Math.floor(totalReturnAmount);
@@ -227,22 +227,6 @@
             })
 
         }
-
-
-
-
-        // function investAmount(){
-        //     invstAmtSlider = document.getElementById("mIvstAmntRange").value;
-        //     document.getElementById("mIvstAmnt").value = invstAmtSlider; 
-        // }
-        // function noOfYears(){
-        //     yer = document.getElementById("nOfyearRange").value;
-        //     document.getElementById("nOfyear").value = yer;
-        // }
-        // function returnRate(){
-        //     retRate = document.getElementById("returnRange").value;
-        //     document.getElementById("return").value = retRate;
-        // }
     </script>
 </body>
 

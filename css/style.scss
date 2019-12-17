@@ -119,11 +119,16 @@ h3 {
 
     h3 {
         position: absolute;
-        top: 355px;
-        left: 600px;
-        font-size: 40px;
-        transform: rotate(-32deg);
-        color: #d4d4d4;
+    top: 355px;
+    left: 600px;
+    font-size: 40px;
+    /* -webkit-transform: rotate(-32deg); */
+    /* transform: rotate(-32deg); */
+    color: #26a69a;
+    background-color: #ffffff;
+    border: none;
+    padding: 10px;
+    font-weight: normal;
 
     }
 
@@ -140,7 +145,10 @@ h3 {
         width: 100%;
     }
 }
-
+label {
+    font-size: .8rem;
+    color: #002e2a;
+}
 .input-field {
     position: relative;
     margin-top: 0;
