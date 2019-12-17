@@ -5,6 +5,7 @@ body {
     font-family: 'Roboto', sans-serif;
     background-color: #f0f0f0;
 }
+
 .ml-40 {
     margin-left: 40px;
 }
@@ -16,21 +17,25 @@ body {
 .mt-30 {
     margin-top: 30px;
 }
-h3{
+
+h3 {
     margin: 0;
 }
-.headTxt{
+
+.headTxt {
     padding: 25px 0 0px !important;
     font-size: 30px;
     text-align: center;
 }
-#lumsumCal{
+
+#lumsumCal {
     display: none;
 }
+
 .container {
-    width: 95%;
-    
-    .subTxt{
+    width: 90%;
+
+    .subTxt {
         text-align: center;
         display: block;
         font-size: 16px;
@@ -39,12 +44,12 @@ h3{
 
     .row {
         margin-bottom: 0;
-        background-color: #fff;
+        // background-color: #fff;
     }
 
 
     .labelTxt {
-        font-size: 17px;
+        font-size: 15px;
         font-weight: normal;
         margin-top: 10px;
         display: inline-block;
@@ -52,8 +57,8 @@ h3{
     }
 
     .input {
-        padding: 10px 50px;
-        // text-align: center;
+        padding: 10px 40px;
+        background-color: #fff;
     }
 
     .txtRs {
@@ -86,22 +91,22 @@ h3{
         }
 
         b {
-            font-size: 22px;
-            color: #002521;
+            font-size: 18px;
+            color: #001816;
         }
 
         span {
-            font-size: 23px;
+            font-size: 21px;
             margin-left: 35px;
             display: inline-block;
-            padding: 12px;
+            padding: 8px;
             background-color: rgba(38, 166, 154, 0.2);
             color: #002b27;
             border-radius: 3px;
         }
 
         #res {
-            font-size: 23px;
+            font-size: 21px;
             color: #002b27;
         }
     }
@@ -109,7 +114,7 @@ h3{
 }
 
 .chrt {
-    padding: 51px 0;
+    padding: 65px 0;
     box-sizing: border-box;
 
     h3 {
@@ -124,9 +129,9 @@ h3{
 
     h4 {
         position: absolute;
-        top: 110px;
+        top: 130px;
         left: 800px;
-        font-size: 25px;
+        font-size: 23px;
         display: none;
     }
 
@@ -144,7 +149,7 @@ h3{
 
 input[type=number] {
     font-weight: 500;
-    font-size: 24px !important;
+    font-size: 21px !important;
 }
 
 input[type=range] {
