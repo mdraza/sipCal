@@ -119,16 +119,20 @@ h3 {
 
     h3 {
         position: absolute;
-    top: 355px;
-    left: 600px;
-    font-size: 40px;
-    /* -webkit-transform: rotate(-32deg); */
-    /* transform: rotate(-32deg); */
-    color: #26a69a;
-    background-color: #ffffff;
-    border: none;
-    padding: 10px;
-    font-weight: normal;
+        top: 355px;
+        left: 600px;
+        font-size: 25px;
+        padding: 25px;
+        width: 47%;
+        text-align: center;
+        /* -webkit-transform: rotate(-32deg); */
+        /* transform: rotate(-32deg); */
+        color: #1c968b;
+        background-color: #ffffff;
+        border: none;
+        padding: 26px;
+        font-weight: normal;
+        box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.2);
 
     }
 
